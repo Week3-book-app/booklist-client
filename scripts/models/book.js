@@ -1,7 +1,7 @@
 'use strict';
 
 var app = {};
-var __API_URL__ = 'http://localhost:3000';
+const __API_URL__ = 'http://localhost:3000';
 //var __API_URL__ = 'https://mm-hy-booklist.herokuapp.com';
 
 (function (module) {
@@ -10,8 +10,8 @@ var __API_URL__ = 'http://localhost:3000';
     module.errorView.initErrorPage(err);
   }
 
-  function Book(bookObject) {
-    Object.keys(bookObject).forEach(key => this[key] = bookObject[key]);
+  function Book(rawBookObj) {
+    Object.keys(rawBookObj).forEach(key => this[key] = rawBookObj[key]);
   }
 
   Book.prototype.toHtml = function () {
@@ -29,6 +29,11 @@ var __API_URL__ = 'http://localhost:3000';
     $.get(`${__API_URL__}/books`)
       .then(Book.loadAll)
       .then(callback)
+      .catch(errorCallback);
+
+  Book.createBook = book =>
+    $.post(`${__API_URL__}/books/add`, book)
+      .then(() => page('/'))
       .catch(errorCallback);
 
   module.Book = Book;
