@@ -19,6 +19,7 @@ var __API_URL__ = 'http://localhost:3000';
     return template(this);
   }
 
+  // An Array to hold all our object instances.
   Book.all = [];
 
   Book.loadAll = rows => {
