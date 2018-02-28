@@ -5,11 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>BooksApp</title>
 
-        <link rel="stylesheet" href="reset.css"> 
-        <link rel="stylesheet" href="base.css">
-        <!-- <link rel="stylesheet" href="icons.css"> -->
-        <link rel="stylesheet" href="layout.css">
-        <!-- <link rel="stylesheet" href="modules.css"> -->
+        <link rel="stylesheet" href="styles/reset.css"> 
+        <link rel="stylesheet" href="styles/base.css">
+        <link rel="stylesheet" href="styles/icons.css">
+        <link rel="stylesheet" href="styles/layout.css">
+        <link rel="stylesheet" href="styles/modules/book-main.css">
+        <link rel="stylesheet" href="styles/modules/detail-main.css">
+        <link rel="stylesheet" href="styles/modules/error.css">
+        <link rel="stylesheet" href="styles/modules/footer.css">
+        <link rel="stylesheet" href="styles/modules/form-main.css">
+        <link rel="stylesheet" href="styles/modules/header.css">
 
         <script type="text/x-handlebars-template" id="error-template">
             <p>{{status}}: {{statusText}}</p>
@@ -30,14 +35,14 @@
         <header>
             <h1>A Novel Experience</h1>
             <nav class="main-nav">
-                <span class="icon-menu"></span>
+                <div class="icon-menu"></div>
            
                 <ul id="navLinks">
                     <li class="tab" data-content="books">
-                        <a href="/" class="icon-books">View Books</a>
+                        <a href="/" class="icon-books">  View Books</a>
                     </li>
                     <li class="tab" data-content="add">
-                        <a href="/add" class="icon-pencil2">Add Book</a>
+                        <a href="/add" class="icon-pencil2">  Add Book</a>
                     </li>
                 </ul>
             </nav>
@@ -51,6 +56,31 @@
             <section class="book-view container">
                 <h3>My Books</h3>
                 <ul id="books-list"></ul>
+            </section>
+            <section class="form-view container">
+                <h3>Add a New Book</h3>
+                <form  class="new-book-form">
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="Title">
+                        </li>
+                        <li>
+                            <input type="text" placeholder="Author">
+                        </li>
+                        <li>
+                            <input type="text" placeholder="ISBN">
+                        </li>
+                        <li>
+                            <input type="text" placeholder="Image url">
+                        </li>
+                        <li>
+                            <textarea placeholder="Description..."></textarea>
+                        </li>
+                        <li>
+                            <button type="submit">Submit</button>
+                        </li>
+                    </ul>
+                </form>
             </section>
         </main>
         
