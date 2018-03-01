@@ -7,7 +7,7 @@ const __API_URL__ = 'http://localhost:3000';
 (function (module) {
 
   function errorCallback(err) {
-    console.error(err);
+    // console.error(err);
     module.errorView.initErrorPage(err);
   }
 
@@ -25,25 +25,24 @@ const __API_URL__ = 'http://localhost:3000';
   Book.loadAll = rows => Book.all = rows.sort((a, b) => b.title - a.title).map(book => new Book(book));
 
   Book.fetchAll = callback =>
-    $.get(`${__API_URL__}/api/v1/books/:id`)
+    $.get(`${__API_URL__}/api/v1/books`)
       .then(Book.loadAll)
       .then(callback)
-      .catch(errorCallback)
-      .then(() => page('/'));
+      .catch(errorCallback);     
 
   Book.createBook = book =>
-    $.post(`${__API_URL__}/books/add`, book)
+    $.post(`${__API_URL__}/book/add`, book)
       .then(() => page('/'))
       .catch(errorCallback);
 
   Book.fetchOne = (ctx, callback) =>
-    $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
+    $.get(`${__API_URL__}/api/v1/book/${ctx.params.id}`)
       .then(results => ctx.book = results[0])
       .then(callback)
       .catch(errorCallback);
 
   Book.create = book =>
-    $.post(`${__API_URL__}/api/v1/books`, book)
+    $.post(`${__API_URL__}/api/v1/book`, book)
       .then(() => page('/'))
       .catch(errorCallback);
 
