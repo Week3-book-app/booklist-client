@@ -14,8 +14,8 @@ var app = app || {};
     resetView();
     $('.container').hide();
     $('.book-view').show();
-    $('#book-list').empty();
-    app.Book.all.map(book => $('#book-list').append(book.toHtml()));
+    $('#books-list').empty();
+    app.Book.all.map(book => $('#books-list').append(book.toHtml()));
   }
 
   bookView.initDetailPage = function (ctx) {
