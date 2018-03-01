@@ -7,11 +7,12 @@ var app = app || {};
 
   function resetView() {
     $('.container').hide();
-    $('.navigation').slideDown(650);
+    $('.navLinks').slideDown(650);
   }
 
-  bookView.initIndexPage = function (ctx) {
+  bookView.initIndexPage = function () {
     resetView();
+    $('.container').hide();
     $('.book-view').show();
     $('#books-list').empty();
     app.Book.all.map(book => $('#books-list').append(book.toHtml()));
@@ -27,7 +28,7 @@ var app = app || {};
 
   bookView.initCreateFormPage = function () {
     resetView();
-    $('.create-view').show();
+    $('.form-view').show();
     $('#create-form').on('submit', function (event) {
       event.preventDefault();
 
