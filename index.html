@@ -5,39 +5,68 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>BooksApp</title>
 
-        <link rel="stylesheet" href="reset.css"> 
-        <link rel="stylesheet" href="base.css">
-        <!-- <link rel="stylesheet" href="icons.css"> -->
-        <link rel="stylesheet" href="layout.css">
-        <!-- <link rel="stylesheet" href="modules.css"> -->
+        <link rel="stylesheet" href="styles/reset.css"> 
+        <link rel="stylesheet" href="styles/base.css">
+        <link rel="stylesheet" href="styles/icons.css">
+        <link rel="stylesheet" href="styles/layout.css">
+        <link rel="stylesheet" href="styles/modules/admin-main.css">
+        <link rel="stylesheet" href="styles/modules/book-main.css">
+        <link rel="stylesheet" href="styles/modules/detail-main.css">
+        <link rel="stylesheet" href="styles/modules/error.css">
+        <link rel="stylesheet" href="styles/modules/footer.css">
+        <link rel="stylesheet" href="styles/modules/form-main.css">
+        <link rel="stylesheet" href="styles/modules/header.css">
 
         <script type="text/x-handlebars-template" id="error-template">
+            <h3>Some Error Occurred</h3>
             <p>{{status}}: {{statusText}}</p>
         </script>
       
+        <script type="text/x-handlebars-template" id="book-list-template">
+            <li class="book-items" data-id={{id}}>
+                <div class="book-container">
+                    <img src={{image_url}}/>
+                    <div class="book-overlay">
+                        <h3>Book: {{title}}</h3>
+                        <p>Author: {{author}}</p>
+                        <p class="detail-button"><a href="/books/{{id}}">View Details</a></p>
+                    </div>
+                </div>
+            </li>    
+        </script>
+        <script type="text/x-handlebars-template" id="book-detail-template">
+            <li class="book-container">
+                <h4>Book: {{title}}</h4>
+                <div class="book-details">
+                    <p>Author: {{author}}</p>
+                    <p>ISBN: {{isbn}}</p>
+                </div>
+                <img src="{{image_url}}" alt="{{title}} image"/>
+                <p>Description: {{{description}}}</p>
+            </li>    
+        </script> 
         <script type="text/x-handlebars-template" id="book-list-template">
             <li class="book-item">
                 <h4>Book: {{title}}</h4>
                 <p>Author: {{author}}</p>
                 <p>ISBN: {{isbn}}</p>
                 <img src="{{image_url}}" alt="{{title}} image"/>
-                <p>Description: {{{description}}}</p>
+                <p>Description: {{description}}</p>
             </li>    
         </script>
-
     </head>
     <body>
         <header>
             <h1>A Novel Experience</h1>
             <nav class="main-nav">
-                <span class="icon-menu"></span>
+                <div class="icon-menu"></div>
            
                 <ul id="navLinks">
-                    <li class="tab" data-content="books">
-                        <a href="/" class="icon-books">View Books</a>
+                    <li class="tab">
+                        <a href="/" class="icon-books">  View Books</a>
                     </li>
-                    <li class="tab" data-content="add">
-                        <a href="/add" class="icon-pencil2">Add Book</a>
+                    <li class="tab">
+                        <a href="/books/add" class="icon-pencil2">  Add Book</a>
                     </li>
                 </ul>
             </nav>
@@ -48,18 +77,47 @@
                 <h3>Something went wrong... Sorry.</h3>
                 <section id="error-message"></section>
             </section>
-            <section class="book-view container">
+            <section id="books" class="book-view container">
                 <h3>My Books</h3>
                 <ul id="books-list"></ul>
+            </section>
+            <section id="add" class="form-view container">
+                <h3>Add a New Book</h3>
+                <form  class="new-book-form">
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="Title">
+                        </li>
+                        <li>
+                            <input type="text" placeholder="Author">
+                        </li>
+                        <li>
+                            <input type="text" placeholder="ISBN">
+                        </li>
+                        <li>
+                            <input type="text" placeholder="Image url">
+                        </li>
+                        <li>
+                            <textarea placeholder="Description..."></textarea>
+                        </li>
+                        <li>
+                            <button type="submit">Submit</button>
+                        </li>
+                    </ul>
+                </form>
             </section>
         </main>
         
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    
-        <script src="./scripts/models/books.js" type="text/javascript"></script>
+
+        <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.8.4/page.min.js"></script>
+        <script src="./scripts/models/book.js" type="text/javascript"></script>
         <script src="./scripts/views/book-view.js" type="text/javascript"></script>
         <script src="./scripts/views/error-view.js" type="text/javascript"></script>
+        <script src="./scripts/controllers/routes.js"></script>
+
     </body>
     <footer>
             <a href="" class="icon-github"></a>

@@ -1,0 +1,58 @@
+@media only screen and (max-width: 640px){
+    header h1{
+    background-color: #7E2982;
+    color:#fff;
+    height: 70px;
+    font-size: 40px;
+    padding:25px 0 0 20px;
+    }
+
+    .main-nav{
+    display: inline-block; 
+    }
+
+    .tab a{
+    text-decoration: none;
+    font-size: 30px;
+    color: #fff;
+    padding: 0 0 0 25px;
+    }
+
+    .tab{
+        list-style-type: none;
+        float: left;
+        padding: 10px;
+    }
+
+    .icon-menu {
+    position: absolute;
+    right: 45px;
+    top: 55px;
+    font-size: 40px;
+    padding: 0;
+    color:#fff;
+    }
+
+    .tab {
+        display: none;
+    }
+
+    .main-nav:hover {
+        width: 100%;
+        padding: 0 0 15px 0;
+    }
+    .main-nav:hover ul{
+        width: 100%;
+    }
+
+    .main-nav:hover .tab{
+        display: block;
+        font-size: 20px;
+        float: left;
+        width: 100%;
+        border-bottom: 1px solid #fff;
+        margin: 0s;
+        padding: 20px 0;
+        background-color: rgb(223, 94, 230);
+    }
+}
