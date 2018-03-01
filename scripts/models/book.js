@@ -1,12 +1,13 @@
 'use strict';
 
-var app = {};
+var app = app || {};
 const __API_URL__ = 'http://localhost:3000';
-//var __API_URL__ = 'https://mm-hy-booklist.herokuapp.com';
+// var __API_URL__ = 'https://mm-hy-booklist.herokuapp.com';
 
 (function (module) {
+
   function errorCallback(err) {
-    console.error(err);
+    // console.error(err);
     module.errorView.initErrorPage(err);
   }
 
@@ -19,20 +20,39 @@ const __API_URL__ = 'http://localhost:3000';
     return template(this);
   }
 
+  // An Array to hold all our object instances.
   Book.all = [];
 
-  Book.loadAll = rows => {
-    Book.all = rows.sort((a, b) => b.title - a.title).map(book => new Book(book));
-  }
+  Book.loadAll = rows => { Book.all = rows.sort((a, b) => b.title - a.title).map(book => new Book(book)) };
 
   Book.fetchAll = callback =>
-    $.get(`${__API_URL__}/books`)
+    $.get(`${__API_URL__}/api/v1/books`)
       .then(Book.loadAll)
+      .then(console.log(Book.all))
+      .then(callback)
+
+      .catch(errorCallback);
+      
+
+  Book.fetchOne = (ctx, callback) =>
+    $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
+      .then(results => ctx.book = results[0])
       .then(callback)
       .catch(errorCallback);
 
   Book.createBook = book =>
-    $.post(`${__API_URL__}/books/add`, book)
+    $.post(`${__API_URL__}/book/add`, book)
+      .then(() => page('/'))
+      .catch(errorCallback);
+
+  Book.fetchOne = (ctx, callback) =>
+    $.get(`${__API_URL__}/api/v1/book/${ctx.params.id}`)
+      .then(results => ctx.book = results[0])
+      .then(callback)
+      .catch(errorCallback);
+
+  Book.create = book =>
+    $.post(`${__API_URL__}/api/v1/book`, book)
       .then(() => page('/'))
       .catch(errorCallback);
 
