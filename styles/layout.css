@@ -1,17 +1,4 @@
 @media only screen and (max-width: 640px){
-  header{
-    background-color: #7E2982;
-  }
-
-  header h1{
-    color:#fff;
-  }
-
-  .book-view{
-    background-color: #16A04A;
-  }
-
-  .boo-view h3{
-    color:#fff;
-  }
+  
+  
 }
