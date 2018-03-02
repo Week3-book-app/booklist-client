@@ -12,7 +12,6 @@ var app = app || {};
 
   bookView.initIndexPage = function () {
     resetView();
-    $('.container').hide();
     $('.book-view').show();
     $('#books-list').empty();
     app.Book.all.map(book => $('#books-list').append(book.toHtml()));
@@ -21,9 +20,9 @@ var app = app || {};
   bookView.initDetailPage = function (ctx) {
     resetView();
     $('.detail-view').show();
-    $('.book-detail').empty();
+    $('#book-detail').empty();
     let template = Handlebars.compile($('#book-detail-template').text());
-    $('.book-detail').append(template(ctx));
+    $('#book-detail').append(template(ctx));
   }
 
   bookView.initCreateFormPage = function () {

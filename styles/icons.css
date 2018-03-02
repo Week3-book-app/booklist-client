@@ -34,6 +34,10 @@
   content: "\e906";
 }
 
+.icon-user-tie:before {
+  content: "\e976";
+}
+
 .icon-github:before {
   content: "\eab0";
 }
