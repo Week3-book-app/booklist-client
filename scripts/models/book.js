@@ -20,6 +20,11 @@ const __API_URL__ = 'http://localhost:3000';
     return template(this);
   }
 
+  // Book.prototype.toHtml = function () {
+  //   let template = Handlebars.compile($('#book-detail-template').text());
+  //   return template(this);
+  // }
+
   // An Array to hold all our object instances.
   Book.all = [];
 
@@ -30,13 +35,6 @@ const __API_URL__ = 'http://localhost:3000';
       .then(Book.loadAll)
       .then(console.log(Book.all))
       .then(callback)
-
-      .catch(errorCallback);     
-
-  Book.fetchOne = (ctx, callback) =>
-    $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
-      .then(results => ctx.book = results[0])
-      .then(callback)
       .catch(errorCallback);
 
   Book.createBook = book =>
@@ -45,7 +43,7 @@ const __API_URL__ = 'http://localhost:3000';
       .catch(errorCallback);
 
   Book.fetchOne = (ctx, callback) =>
-    $.get(`${__API_URL__}/api/v1/book/${ctx.params.id}`)
+    $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
       .then(results => ctx.book = results[0])
       .then(callback)
       .catch(errorCallback);
