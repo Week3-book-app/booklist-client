@@ -37,8 +37,8 @@ const __API_URL__ = 'http://localhost:3000';
       .then(callback)
       .catch(errorCallback);
 
-  Book.createBook = book =>
-    $.post(`${__API_URL__}/book/add`, book)
+  Book.create = book =>
+    $.post(`${__API_URL__}/api/v1/books/add`, book)
       .then(() => page('/'))
       .catch(errorCallback);
 
@@ -48,10 +48,12 @@ const __API_URL__ = 'http://localhost:3000';
       .then(callback)
       .catch(errorCallback);
 
-  Book.create = book =>
-    $.post(`${__API_URL__}/api/v1/book`, book)
+  Book.update = book =>
+    $.put(`${__API_URL__}/api/v1/books/add`, book)
       .then(() => page('/'))
-      .catch(errorCallback);
+      .catch(console.log);
+
+
 
   module.Book = Book;
 })(app)
