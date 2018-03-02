@@ -38,7 +38,7 @@ var app = app || {};
         image_url: event.target.image_url.value,
         description: event.target.description.value
       }
-      app.Book.create(book);
+      module.Book.create(book);
     })
   }
 

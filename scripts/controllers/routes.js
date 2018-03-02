@@ -2,7 +2,7 @@
 
 
 page('/', () => app.Book.fetchAll(app.bookView.initIndexPage));
-page('/books/add', ctx => app.bookView.initCreateFormPage(ctx));
+page('/books/add', app.bookView.initCreateFormPage);
 
 page('/books/:id', ctx => app.Book.fetchOne(ctx, app.bookView.initDetailPage(ctx)));
 

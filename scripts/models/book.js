@@ -38,7 +38,7 @@ const __API_URL__ = 'http://localhost:3000';
       .catch(errorCallback);
 
   Book.create = book =>
-    $.post(`${__API_URL__}/api/v1/books/add`, book)
+    $.post(`${__API_URL__}/api/v1/books`, book)
       .then(() => page('/'))
       .catch(errorCallback);
 
