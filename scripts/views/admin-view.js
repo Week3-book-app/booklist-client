@@ -9,7 +9,7 @@ const __API_URL__ = 'http://localhost:3000';
   adminView.initAdminPage = function(ctx, next) {
     $('#admin-form').on('submit', function (event) {
       event.preventDefault();
-      let tokenEntered = event.target.passphrase.value;
+      let tokenEntered = event.target.passcode.value;
 
       $.get(`${__API_URL__}/admin`, { tokenEntered })
         .then(function (verified) {

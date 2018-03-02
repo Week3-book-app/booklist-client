@@ -44,7 +44,9 @@ const __API_URL__ = 'http://localhost:3000';
 
   Book.fetchOne = (ctx, callback) =>
     $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
-      .then(results => ctx.book = results[0])
+      .then(results => {
+        return ctx.book = results[0]
+      })
       .then(callback)
       .catch(errorCallback);
 

@@ -19,6 +19,7 @@ var app = app || {};
 
   bookView.initDetailPage = function (ctx) {
     resetView();
+    console.log(ctx);
     $('.detail-view').show();
     $('#book-detail').empty();
     let template = Handlebars.compile($('#book-detail-template').text());
@@ -41,13 +42,6 @@ var app = app || {};
       app.Book.create(book);
     })
   }
-
-  // bookView.initDetailPag = Function(ctx) {
-  //   resetView();
-  //   $('.detail-view').show();
-  //   $('.book-detail').empty();
-  //   let template = Handlebars.compile('#book-detail-template').text();
-  // }
 
   module.bookView = bookView;
 })(app)

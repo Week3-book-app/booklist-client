@@ -36,23 +36,17 @@
             </li>    
         </script>
         <script type="text/x-handlebars-template" id="book-detail-template">
-            <li class="detail-container">
+            <div class="book-detail-container">
                 <h4>{{title}}</h4>
-                <div class="book-details"></div>
+                <div id="book-info">
                     <p class="pull-left">{{author}}</p>
                     <p class="pull-right">{{isbn}}</p>
                 </div>
-                <img src="{{image_url}}" alt="{{title}} image"/>
-                <p>{{description}}</p>
-            </li>    
+                <img src={{image_url}}>
+                <p id="desc">{{description}}</p>
+            </div>
         </script> 
-        <section class="admin-view container">
-            <h2 class="view-title">Enter Your Passphrase</h2>
-            <form id="admin-form">
-                <input type="number" name="passphrase" placeholder="1234">
-                <button type="submit">Verify</button>
-            </form>
-        </section>
+        
     </head>
     <body>
         <header>
@@ -114,10 +108,17 @@
                     </div>    
                 </form>
             </section>
-            <section id="details" class="detail-view container">
-                <ul id="detail-list"></ul>
+            <section class="detail-view container">
+                <section id="book-detail"></section>
                 <button id="update">Update</button>
                 <button id="delete">Delete</button>
+            </section>
+            <section class="admin-view container">
+                <h2 class="view-title">Enter Your Passcode</h2>
+                <form id="admin-form">
+                    <input type="number" name="passcode" placeholder="1234">
+                    <button type="submit">Verify</button>
+                </form>
             </section>
         </main>
         
