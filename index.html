@@ -25,7 +25,9 @@
         <script type="text/x-handlebars-template" id="book-list-template">
             <li class="book-items" data-id={{id}}>
                 <div class="book-container">
-                    <img src={{image_url}}/>
+                    <div class="image-container">
+                        <img src={{image_url}}/>
+                    </div>    
                     <div class="book-overlay">
                         <h3>Book: {{title}}</h3>
                         <p>Author: {{author}}</p>
