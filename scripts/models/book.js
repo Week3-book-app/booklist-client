@@ -33,7 +33,6 @@ const __API_URL__ = 'http://localhost:3000';
   Book.fetchAll = callback =>
     $.get(`${__API_URL__}/api/v1/books`)
       .then(Book.loadAll)
-      .then(console.log(Book.all))
       .then(callback)
       .catch(errorCallback);
 
@@ -44,18 +43,26 @@ const __API_URL__ = 'http://localhost:3000';
 
   Book.fetchOne = (ctx, callback) =>
     $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
-      .then(results => {
-        return ctx.book = results[0]
-      })
+      .then(results => ctx.book = results[0])
       .then(callback)
       .catch(errorCallback);
 
-  Book.update = book =>
-    $.put(`${__API_URL__}/api/v1/books/add`, book)
+  Book.update = (book, id) =>
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/${id}`,
+      method: 'PUT',
+      data: book,
+    })
+      .then(() => page(`/books/${id}`))
+      .catch(errorCallback);
+
+  Book.destroy = id =>
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/${id}`,
+      method: 'DELETE',
+    })
       .then(() => page('/'))
-      .catch(console.log);
-
-
+      .catch(errorCallback);
 
   module.Book = Book;
 })(app)
