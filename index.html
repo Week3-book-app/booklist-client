@@ -69,7 +69,7 @@
         </header>
         
         <main>
-            <section class="error-view error-container">
+            <section class="error-view container">
                 <h3>Something went wrong... Sorry.</h3>
                 <section id="error-message"></section>
             </section>
@@ -82,8 +82,7 @@
                 <form  class="new-book-form">
                     <ul>
                         <li>
-                            <input type="text"    name="title" placeholder="Title">
-                            
+                            <input type="text"    name="title" placeholder="Title">   
                         </li>
                         <li>
                             <input type="text"
@@ -113,13 +112,41 @@
                 <button id="update">Update</button>
                 <button id="delete">Delete</button>
             </section>
-            <section class="admin-view container">
-                <h2 class="view-title">Enter Your Passcode</h2>
-                <form id="admin-form">
-                    <input type="number" name="passcode" placeholder="1234">
-                    <button type="submit">Verify</button>
+            <section class="update-view container">
+                <h2 class="view-title">update a book</h2>
+                <form id="update-form">
+                    <ul>
+                        <li>
+                            <input type="text"    name="title" placeholder="Title">
+                        </li>
+                        <li>
+                            <input type="text"
+                            name="author"  placeholder="Author">
+                        </li>
+                        <li>
+                            <input type="text" 
+                            name="isbn"
+                            placeholder="ISBN">
+                        </li>
+                        <li>
+                            <input type="text" 
+                            name="image_url"
+                            placeholder="Image url">
+                        </li>
+                        <li>
+                            <textarea name="description" placeholder="Description..."></textarea>
+                        </li>   
+                    <button type="submit">Update</button>
                 </form>
-            </section>
+              </section>
+          
+              <section class="admin-view container">
+                <h2 class="view-title">verify your passcode</h2>
+                <form id="admin-form">
+                  <input type="number" name="passcode" placeholder="1234">
+                  <button type="submit">verify</button>
+                </form>
+              </section>
         </main>
         
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
